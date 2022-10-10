@@ -6,4 +6,5 @@ type Instance struct {
 	Host     string `toml:"host"`
 	Database string `toml:"database"`
 	Charset  string `toml:"charset"`
+	LogShow  bool   `toml:"log_show"`
 }
