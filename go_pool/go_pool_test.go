@@ -7,12 +7,13 @@ import (
 	"testing"
 )
 
-func TestNewGoPool(t *testing.T) {
+func TestGoPool(t *testing.T) {
 	p, _ := ants.NewPoolWithFunc(5, func(i interface{}) {
 		data := i.(int)
 		handlerTest(data)
 	})
-
+	// 关闭协程池
+	defer p.Release()
 	ch := make(chan interface{}, 100)
 
 	for i := 0; i <= 99; i++ {
@@ -29,6 +30,7 @@ func TestNewGoPool(t *testing.T) {
 			break
 		}
 	}
+
 }
 
 func handlerTest(data int) {
