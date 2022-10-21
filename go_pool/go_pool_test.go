@@ -19,18 +19,14 @@ func TestGoPool(t *testing.T) {
 	for i := 0; i <= 99; i++ {
 		ch <- i
 	}
-
-	for {
-		data := <-ch
-		err := p.Invoke(data)
+	close(ch)
+	for v := range ch {
+		err := p.Invoke(v)
 		if err != nil {
-
-		}
-		if len(ch) == 0 {
-			break
+			fmt.Println(err)
+			continue
 		}
 	}
-
 }
 
 func handlerTest(data int) {
