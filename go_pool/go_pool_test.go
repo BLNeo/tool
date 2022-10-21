@@ -15,11 +15,13 @@ func TestGoPool(t *testing.T) {
 	// 关闭协程池
 	defer p.Release()
 	ch := make(chan interface{}, 100)
+	go func() {
+		for i := 0; i <= 99; i++ {
+			ch <- i
+		}
+		close(ch)
+	}()
 
-	for i := 0; i <= 99; i++ {
-		ch <- i
-	}
-	close(ch)
 	for v := range ch {
 		err := p.Invoke(v)
 		if err != nil {
