@@ -14,5 +14,7 @@ require (
 	github.com/onsi/gomega v1.20.2 // indirect
 	github.com/panjf2000/ants v1.2.1
 	go.mongodb.org/mongo-driver v1.10.3
+	go.uber.org/zap v1.13.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	xorm.io/xorm v1.3.2
 )
