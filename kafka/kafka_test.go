@@ -92,7 +92,7 @@ func handlerProducer(p sarama.AsyncProducer, topic string) {
 	}
 }
 
-//handlerProducer 处理生产者函数
+//handlerProducer 处理消费者函数
 func handleConsumer(c *cluster.Consumer) {
 	// trap SIGINT to trigger a shutdown.
 	signals := make(chan os.Signal, 1)
